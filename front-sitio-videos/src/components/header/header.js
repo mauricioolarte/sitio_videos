@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+} from "react-router-dom";
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -20,12 +26,8 @@ function Header() {
 						style={{ maxHeight: '100px' }}
 						navbarScroll
 					>
-						<Nav.Link href="#action1">Home</Nav.Link>
-						<Nav.Link href="#action2">About</Nav.Link>
-
-						<Nav.Link href="#" disabled>
-							Contacto
-      			</Nav.Link>
+						<Nav.Link href="/">Home</Nav.Link>
+						<Nav.Link href="/about">About</Nav.Link>
 					</Nav>
 					<Form className="d-flex ms-auto">
 						<FormControl
@@ -44,6 +46,5 @@ function Header() {
 
 	)
 }
-
 
 export default Header;

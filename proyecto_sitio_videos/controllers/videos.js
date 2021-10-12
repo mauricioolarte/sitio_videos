@@ -5,7 +5,7 @@ const { Usuario } = require('../models');
 
 const obtenerVideos = async (req, res = response) => {
 
-	const { limite = 5, desde = 0 } = req.query;
+	const { limite = 20, desde = 0 } = req.query;
 	const query = { estado: true };
 
 	const [total, Videos] = await Promise.all([
@@ -109,11 +109,58 @@ const borrarVideo = async (req, res = response) => {
 	res.json(VideoBorrado);
 }
 
+const valoracion = async (req, res = response) => {
+
+	const { valoracion, userId, ...data } = req.body;
+	const { id } = req.params;
+	const video = await Video.findById(id);
+
+	let likesNumber = video.likesNumber;
+	let dislikesNumber = video.dislikesNumber;
+	let userlikes = video.userlikes;
+	let userdislikes = video.userdislikes;
+
+	if (valoracion == "like") {
+		const index = userlikes.indexOf(userId);
+		console.log(index)
+		if (index >= 0) {
+			userlikes.splice(index, 1);
+			likesNumber = userlikes.length;
+		} else {
+			userlikes.push(userId);
+			likesNumber = userlikes.length;
+			console.log(likesNumber);
+		}
+	} else {
+
+		const index = userdislikes.indexOf(userId);
+		console.log(index)
+		if (index >= 0) {
+			userdislikes.splice(index, 1)
+			dislikesNumber = userdislikes.length
+		} else {
+			userdislikes.push(userId)
+			dislikesNumber = userdislikes.length
+			console.log(likesNumber)
+		}
+
+
+	}
+	const videoActualizado = await Video.findByIdAndUpdate(id, {
+		userlikes,
+		userdislikes,
+		likesNumber,
+		dislikesNumber
+	}, { new: true })
+	res.json(videoActualizado)
+}
+
 module.exports = {
 	crearVideo,
 	obtenerVideos,
 	obtenerVideo,
 	actualizarVideo,
 	borrarVideo,
-	descargarVideo
+	descargarVideo,
+	valoracion
 }

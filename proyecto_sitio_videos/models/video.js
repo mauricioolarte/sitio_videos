@@ -9,7 +9,6 @@ const VideoSchema = Schema({
 	estado: {
 		type: Boolean,
 		default: true,
-		required: true
 	},
 	usuario: {
 		type: Schema.Types.ObjectId,
@@ -24,7 +23,17 @@ const VideoSchema = Schema({
 	},
 	tags: [{
 		type: String
-	}]
+	}],
+	likesNumber: {
+		type: Number,
+		default: 0
+	},
+	userlikes: [{ type: String }],
+	userdislikes: [{ type: String }],
+	dislikesNumber: {
+		type: Number,
+		default: 0
+	}
 });
 
 
