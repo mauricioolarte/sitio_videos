@@ -1,33 +1,56 @@
 import React, { useState } from 'react';
 
+const axios = require('axios');
+const FormData = require('form-data');
+
 function CreateVideo() {
 
 	const [nombre, setNombre] = useState('')
 	const [tags, setTags] = useState('')
 	const [descripcion, setDescripcion] = useState('')
+	const [file, setFile] = useState('')
+	const [data, setData] = useState('')
 
 
 
-	function handleInputChange(e) {
+	function handleInputChangeName(e) {
 		setNombre(e.target.value)
+	}
+	function handleInputChangeTags(e) {
 		setTags(e.target.value)
+	}
+	function handleInputChangeDesc(e) {
 		setDescripcion(e.target.value)
-
-		console.log(nombre)
-		console.log(tags)
-
-		console.log(descripcion)
-
+	}
+	function handleInputChangeFile(e) {
+		setFile(document.querySelector('#file'));
 	}
 
 
 	function enviarDatos(e) {
 		e.preventDefault()
-		console.log('enviando datos')
-		console.log(nombre)
-		console.log(tags)
 
-		console.log(descripcion)
+		const url = 'http://localhost:3000/api/videos'
+		if (file !== '') {
+			var formData = new FormData();
+			formData.append('archivo', file.files[0])
+		}
+
+		formData.append('tags', tags)
+		formData.append('nombre', nombre)
+		formData.append('descripcion', descripcion)
+		formData.append('usuario', "6162dd2660ac4ca556a3289f")
+
+
+		axios({
+			method: 'post',
+			url: url,
+			data: formData
+		}).then((res) => {
+			setData(res.data)
+			alert('Video creado con exito')
+		});
+		console.log(data)
 	}
 
 	return (
@@ -40,7 +63,7 @@ function CreateVideo() {
 							type="text"
 							placeholder="Nombre"
 							className="form-control"
-							onChange={handleInputChange}
+							onChange={handleInputChangeName}
 							name="nombre" />
 					</div>
 					<div className="col-md-7">
@@ -48,7 +71,7 @@ function CreateVideo() {
 							type="text"
 							placeholder="Tags"
 							className="form-control"
-							onChange={handleInputChange}
+							onChange={handleInputChangeTags}
 							name="tags" />
 					</div>
 					<div className="col-md-5">
@@ -59,7 +82,7 @@ function CreateVideo() {
 							type="text-area"
 							placeholder="descripcion"
 							className="form-control"
-							onChange={handleInputChange}
+							onChange={handleInputChangeDesc}
 							name="descripcion" />
 					</div>
 					<div className="col-md-7">
@@ -68,7 +91,8 @@ function CreateVideo() {
 							accept="video/*"
 							placeholder="Archivo"
 							className="form-control"
-							onChange={handleInputChange}
+							id="file"
+							onChange={handleInputChangeFile}
 							name="archivo" />
 					</div>
 					<div className="col-md-5">

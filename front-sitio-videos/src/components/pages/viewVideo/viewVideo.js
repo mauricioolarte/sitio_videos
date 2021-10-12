@@ -58,6 +58,9 @@ function ViewVideo() {
 		});
 	}
 
+	function handleDownload() {
+		console.log('hola')
+	}
 
 	console.log(data)
 
@@ -78,6 +81,8 @@ function ViewVideo() {
 					<Button variant="outline-primary" style={{ width: '5rem', margin: '5px' }} disabled>{data.likesNumber}</Button>
 					<Button variant="primary" style={{ width: '5rem', margin: '5px' }} onClick={handleClickDislike}>Dislike</Button>
 					<Button variant="outline-primary" style={{ width: '5rem', margin: '5px' }} disabled>{data.dislikesNumber}</Button>
+					<Button variant="primary" style={{ width: '10rem', margin: '5px' }} onClick={handleDownload}>Download</Button>
+
 				</Card.Body>
 			</Card>
 

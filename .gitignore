@@ -3,3 +3,4 @@ proyecto_sitio_videos/node_modules
 front-sitio-videos/.env
 proyecto_sitio_videos/.env
 token
+/proyecto_sitio_videos/assets/*
