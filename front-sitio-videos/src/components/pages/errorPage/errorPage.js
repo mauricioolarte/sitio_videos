@@ -5,7 +5,7 @@ function ErrorPage() {
 	return (
 		<>
 
-			<h1>Error page 404</h1>
+			<h1 className="mt-3 text-center">Error page 404</h1>
 
 
 		</>

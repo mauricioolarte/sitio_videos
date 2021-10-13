@@ -75,7 +75,7 @@ function CreateVideo() {
 							name="tags" />
 					</div>
 					<div className="col-md-5">
-						<p>* ingresa las palabras separadas por coma.</p>
+						<p>* Separa los tags con comas.</p>
 					</div>
 					<div className="col-md-7">
 						<input

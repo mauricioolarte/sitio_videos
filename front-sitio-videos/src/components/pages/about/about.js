@@ -4,7 +4,7 @@ function AboutPage() {
 
 	return (
 		<>
-			<h1>About page</h1>
+			<h1 className="mt-3 text-center">About page</h1>
 		</>
 	)
 

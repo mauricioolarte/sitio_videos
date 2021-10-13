@@ -8,7 +8,7 @@ function SearchVideo() {
 	return (
 		<>
 
-			<h1>search video</h1>
+			<h1 className="mt-3 text-center">search video</h1>
 
 
 		</>

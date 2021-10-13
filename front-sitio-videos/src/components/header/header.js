@@ -17,7 +17,7 @@ import Button from 'react-bootstrap/Button';
 function Header() {
 	return (
 		<>
-			<Navbar bg="light" expand="lg">
+			<Navbar bg="light" expand="lg" className="m-1 pl-4">
 				<Navbar.Brand href="#">Videos - Project</Navbar.Brand>
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">

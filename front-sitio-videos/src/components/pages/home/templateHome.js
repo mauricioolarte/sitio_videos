@@ -37,7 +37,7 @@ function Home() {
 		<>
 			<ul>
 				<li>
-					<h3>videos mas populares</h3>
+					<h3 className="mt-3">videos mas populares</h3>
 					<Row>
 						{
 							popularV.map(element => {
@@ -48,20 +48,20 @@ function Home() {
 					</Row>
 				</li>
 				<li>
-					<h3>videos mas recientes</h3>
+					<h3 className="mt-3">videos mas recientes</h3>
 					<Row>
 
 
 					</Row>
 				</li>
 				<li>
-					<h3>mis videos fovoritos</h3>
+					<h3 className="mt-3">mis videos fovoritos</h3>
 					<Row>
 
 					</Row>
 				</li>
 				<li>
-					<h3>mis videos</h3>
+					<h3 className="mt-3">mis videos</h3>
 					<Row>
 
 					</Row>

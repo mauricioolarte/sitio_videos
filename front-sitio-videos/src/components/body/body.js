@@ -26,7 +26,7 @@ function Body() {
 			<Router>
 				<Container className='body_heigth' fluid>
 					<Row>
-						<Col sm={3}>
+						<Col sm={2} className="mt-5">
 							<ul>
 								<li>
 									<h4><Link to="/create">Agregar video</Link></h4>
@@ -38,7 +38,7 @@ function Body() {
 								</li>
 							</ul>
 						</Col>
-						<Col sm={9}>
+						<Col sm={10}>
 
 							<Switch>
 								<Route exact path="/" component={Home} />

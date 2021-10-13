@@ -17,8 +17,8 @@ function CardVideo(props) {
 
 	return (
 		<>
-			<Card style={{ width: '18rem' }}>
-				<video src={props.data.url} >
+			<Card style={{ width: '15rem' }} className="m-2">
+				<video src={props.data.url} className="mt-3">
 				</video>
 				<Card.Body>
 					<Card.Title>{props.data.nombre}</Card.Title>

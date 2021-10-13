@@ -6,7 +6,7 @@ function EditVideo() {
 	return (
 		<>
 
-			<h1>view video</h1>
+			<h1 className="mt-3 text-center">view video</h1>
 
 
 		</>
