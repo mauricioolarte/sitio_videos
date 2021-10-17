@@ -47,20 +47,35 @@ function Home() {
 				<li>
 					<h3 className="mt-3">videos mas recientes</h3>
 					<Row>
-
+						{
+							Array.isArray(popularV) ?
+								popularV.map(element => {
+									return <CardVideo data={element}></CardVideo>
+								}) : (<Spinner animation="border" />)
+						}
 
 					</Row>
 				</li>
 				<li>
 					<h3 className="mt-3">mis videos fovoritos</h3>
 					<Row>
-
+						{
+							Array.isArray(popularV) ?
+								popularV.map(element => {
+									return <CardVideo data={element}></CardVideo>
+								}) : (<Spinner animation="border" />)
+						}
 					</Row>
 				</li>
 				<li>
 					<h3 className="mt-3">mis videos</h3>
 					<Row>
-
+						{
+							Array.isArray(popularV) ?
+								popularV.map(element => {
+									return <CardVideo data={element}></CardVideo>
+								}) : (<Spinner animation="border" />)
+						}
 					</Row>
 				</li>
 			</ul>
