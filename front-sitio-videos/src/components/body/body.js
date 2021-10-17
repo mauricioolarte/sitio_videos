@@ -18,6 +18,9 @@ import CreateVideo from '../pages/create/createVideo';
 import ViewVideo from '../pages/viewVideo/viewVideo';
 import EditVideo from '../pages/editVideo/editVideo';
 import ErrorPage from '../pages/errorPage/errorPage';
+import LoginPage from '../pages/login/loginPage'
+import RegisterPage from '../pages/register/registerPage'
+
 
 
 function Body() {
@@ -48,6 +51,10 @@ function Body() {
 								<Route exact path="/search" component={SearchVideo} />
 								<Route exact path="/contact" component={ContactPage} />
 								<Route exact path="/about" component={AboutPage} />
+								<Route exact path="/login" component={LoginPage} />
+								<Route exact path="/register" component={RegisterPage} />
+
+
 								<Route component={ErrorPage} />
 							</Switch>
 

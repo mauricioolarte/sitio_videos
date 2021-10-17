@@ -26,36 +26,46 @@ function ViewVideo() {
 
 	function handleClickLike() {
 
-		const videoId = data.vid;
-		const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
-		const dataReq = {
-			userId: data.usuario._id,
-			valoracion: "like"
+		if (!localStorage.getItem('usuario')) {
+			alert('Para valorar videos debe estar logueado')
+		} else {
+
+
+			const videoId = data.vid;
+			const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
+			const dataReq = {
+				userId: data.usuario._id,
+				valoracion: "like"
+			}
+			axios({
+				method: 'put',
+				url: url,
+				data: dataReq
+			}).then((res) => {
+				setData(res.data)
+			});
 		}
-		axios({
-			method: 'put',
-			url: url,
-			data: dataReq
-		}).then((res) => {
-			setData(res.data)
-		});
 	}
 
 	function handleClickDislike() {
 
-		const videoId = data.vid;
-		const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
-		const dataReq = {
-			userId: data.usuario._id,
-			valoracion: "dislike"
+		if (!localStorage.getItem('usuario')) {
+			alert('Para valorar videos debe estar logueado')
+		} else {
+			const videoId = data.vid;
+			const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
+			const dataReq = {
+				userId: data.usuario._id,
+				valoracion: "dislike"
+			}
+			axios({
+				method: 'put',
+				url: url,
+				data: dataReq
+			}).then((res) => {
+				setData(res.data)
+			});
 		}
-		axios({
-			method: 'put',
-			url: url,
-			data: dataReq
-		}).then((res) => {
-			setData(res.data)
-		});
 	}
 
 

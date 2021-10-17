@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Redirect } from 'react-router-dom';
+
 const axios = require('axios');
 const FormData = require('form-data');
 
@@ -11,6 +13,12 @@ function CreateVideo() {
 	const [file, setFile] = useState('')
 	const [data, setData] = useState('')
 
+	let usuarioId = ''
+
+	if (localStorage.getItem('usuario')) {
+		let usuario = JSON.parse(localStorage.getItem('usuario'))
+		usuarioId = usuario.uid
+	}
 
 
 	function handleInputChangeName(e) {
@@ -40,7 +48,7 @@ function CreateVideo() {
 		formData.append('tags', tags)
 		formData.append('nombre', nombre)
 		formData.append('descripcion', descripcion)
-		formData.append('usuario', "6162dd2660ac4ca556a3289f")
+		formData.append('usuario', usuarioId)
 
 
 		axios({
@@ -54,60 +62,59 @@ function CreateVideo() {
 	}
 
 	return (
-		<>
-			<h1>crear video</h1>
-			<div>
-				<form className="row" onSubmit={enviarDatos} >
-					<div className="col-md-7">
-						<input
-							type="text"
-							placeholder="Nombre"
-							className="form-control"
-							onChange={handleInputChangeName}
-							name="nombre" />
-					</div>
-					<div className="col-md-7">
-						<input
-							type="text"
-							placeholder="Tags"
-							className="form-control"
-							onChange={handleInputChangeTags}
-							name="tags" />
-					</div>
-					<div className="col-md-5">
-						<p>* Separa los tags con comas.</p>
-					</div>
-					<div className="col-md-7">
-						<input
-							type="text-area"
-							placeholder="descripcion"
-							className="form-control"
-							onChange={handleInputChangeDesc}
-							name="descripcion" />
-					</div>
-					<div className="col-md-7">
-						<input
-							type="file"
-							accept="video/*"
-							placeholder="Archivo"
-							className="form-control"
-							id="file"
-							onChange={handleInputChangeFile}
-							name="archivo" />
-					</div>
-					<div className="col-md-5">
-						<p>* Solo se permiten archivos de video</p>
-					</div>
+		localStorage.getItem('usuario') ?
+			(
+				<>
+					<h1>crear video</h1>
+					<div>
+						<form className="row" onSubmit={enviarDatos} >
+							<div className="col-md-7">
+								<input
+									type="text"
+									placeholder="Nombre"
+									className="form-control"
+									onChange={handleInputChangeName}
+									name="nombre" />
+							</div>
+							<div className="col-md-7">
+								<input
+									type="text"
+									placeholder="Tags"
+									className="form-control"
+									onChange={handleInputChangeTags}
+									name="tags" />
+							</div>
+							<div className="col-md-5">
+								<p>* Separa los tags con comas.</p>
+							</div>
+							<div className="col-md-7">
+								<input
+									type="text-area"
+									placeholder="descripcion"
+									className="form-control"
+									onChange={handleInputChangeDesc}
+									name="descripcion" />
+							</div>
+							<div className="col-md-7">
+								<input
+									type="file"
+									accept="video/*"
+									placeholder="Archivo"
+									className="form-control"
+									id="file"
+									onChange={handleInputChangeFile}
+									name="archivo" />
+							</div>
+							<div className="col-md-5">
+								<p>* Solo se permiten archivos de video</p>
+							</div>
 
-					<button type="submit" className="btn btn-primary col-md-4 ms-3 mt-5">Enviar</button>
-				</form>
+							<button type="submit" className="btn btn-primary col-md-4 ms-3 mt-5">Enviar</button>
+						</form>
+					</div>
+				</>
+			) : (<Redirect to="/login" />)
 
-
-
-			</div>
-
-
-		</>
 	)
 
 
