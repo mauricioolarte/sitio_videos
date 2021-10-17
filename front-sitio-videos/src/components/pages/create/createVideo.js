@@ -30,7 +30,7 @@ function CreateVideo() {
 	function enviarDatos(e) {
 		e.preventDefault()
 
-		const url = 'http://localhost:3000/api/videos'
+		const url = 'http://localhost:8080/api/videos'
 		var formData = new FormData();
 
 		if (file !== '') {

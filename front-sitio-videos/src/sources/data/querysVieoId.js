@@ -3,7 +3,7 @@ const axios = require('axios');
 async function queryVideoId(id) {
 
 	try {
-		const url = 'http://localhost:3000/api/videos/' + id
+		const url = 'http://localhost:8080/api/videos/' + id
 		const response = await axios.get(url);
 		return response.data
 	} catch (error) {

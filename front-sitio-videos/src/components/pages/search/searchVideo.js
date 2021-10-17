@@ -22,18 +22,18 @@ function SearchVideo() {
 	const [msgNoResul, setMsgNoResul] = useState('')
 
 	const handleInputChangeDesc = (e) => {
+		e.preventDefault()
 		setTerminoBusqueda(e.target.value);
 	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-
 		setSpinner('block')
 		setMsgNoResul('')
 		setData('')
 
-		const url = 'http://localhost:3000/api/buscar';
+		const url = 'http://localhost:8080/api/buscar';
 
 		var formData = new FormData();
 		formData.append('terminosBusqueda', terminosBusqueda)
@@ -62,7 +62,7 @@ function SearchVideo() {
 			<section>
 				<Row className="justify-content-md-center">
 					<Col xs={8} md={8} >
-						<Form className="d-flex">
+						<Form className="d-flex" onSubmit={e => { e.preventDefault(); }}>
 							<FormControl
 								type="search"
 								placeholder="Search"

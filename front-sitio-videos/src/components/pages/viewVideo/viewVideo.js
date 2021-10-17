@@ -14,7 +14,7 @@ const axios = require('axios');
 function ViewVideo() {
 	let { id } = useParams();
 	const [data, setData] = useState({})
-	const url = 'http://localhost:3000/api/videos/download/' + data.vid
+	const url = 'http://localhost:8080/api/videos/download/' + data.vid
 
 	useEffect(() => {
 		queryVideoId(id).then((res) => {
@@ -27,7 +27,7 @@ function ViewVideo() {
 	function handleClickLike() {
 
 		const videoId = data.vid;
-		const url = "http://localhost:3000/api/videos/valoracion/" + videoId;
+		const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
 		const dataReq = {
 			userId: data.usuario._id,
 			valoracion: "like"
@@ -44,7 +44,7 @@ function ViewVideo() {
 	function handleClickDislike() {
 
 		const videoId = data.vid;
-		const url = "http://localhost:3000/api/videos/valoracion/" + videoId;
+		const url = "http://localhost:8080/api/videos/valoracion/" + videoId;
 		const dataReq = {
 			userId: data.usuario._id,
 			valoracion: "dislike"
@@ -68,9 +68,14 @@ function ViewVideo() {
 				<video src={data.url} controls>
 				</video>
 				<Card.Body>
-					<Card.Title>{data.nombre}</Card.Title>
+					<Card.Title><h2>{data.nombre}</h2></Card.Title>
+
 					<Card.Text>
-						{data.descripcion}
+						<p>{data.descripcion}</p>
+
+						<h4>Tags:</h4>
+						<p>{data.tags}</p>
+
 					</Card.Text>
 					<Button variant="primary" style={{ width: '5rem', margin: '5px' }} onClick={handleClickLike}>Like</Button>
 					<Button variant="outline-primary" style={{ width: '5rem', margin: '5px' }} disabled>{data.likesNumber}</Button>

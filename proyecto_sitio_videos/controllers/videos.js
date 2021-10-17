@@ -59,7 +59,7 @@ const crearVideo = async (req, res = response) => {
 	const autorizedExtensions = ['webm', 'mp4', 'flv', 'mkv'];
 	const newTags = tags.split(',');
 	const nuevonombre = await subirArchivo(req.files, autorizedExtensions, "videos")
-	const url = 'http://localhost:3000/assets/videos/' + nuevonombre;
+	const url = 'http://localhost:8080/assets/videos/' + nuevonombre;
 	// Generar la data a guardar
 	const data = {
 		...body,
