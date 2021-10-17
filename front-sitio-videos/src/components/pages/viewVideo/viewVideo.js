@@ -14,7 +14,6 @@ const axios = require('axios');
 function ViewVideo() {
 	let { id } = useParams();
 	const [data, setData] = useState({})
-	console.log(Object.keys(data))
 	const url = 'http://localhost:3000/api/videos/download/' + data.vid
 
 	useEffect(() => {
