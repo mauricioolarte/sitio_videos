@@ -1,0 +1,5 @@
+.CardView{
+	min-width: 5rem;
+	max-width: 10rem !important;
+	margin: 5px;
+}

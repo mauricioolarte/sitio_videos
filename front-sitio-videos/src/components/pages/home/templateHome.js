@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import CardVideo from '../../cards/card';
 import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 import queryVideos from '../../../sources/data/querysHome'
@@ -19,16 +20,11 @@ function Home() {
 
 	const [popularV, setPopularV] = useState([]);
 
-	console.log(popularV)
-
 
 	queryVideos().then((data) => {
-		if (popularV.length === 0) {
-			console.log("kkkkkk");
-			// console.log(data);
+		if (Array.isArray(popularV) && popularV.length === 0) {
 			setPopularV(data);
 		}
-		// console.log(popularV)
 		return data
 	});
 
@@ -40,9 +36,10 @@ function Home() {
 					<h3 className="mt-3">videos mas populares</h3>
 					<Row>
 						{
-							popularV.map(element => {
-								return <CardVideo data={element}></CardVideo>
-							})
+							Array.isArray(popularV) ?
+								popularV.map(element => {
+									return <CardVideo data={element}></CardVideo>
+								}) : (<Spinner animation="border" />)
 						}
 
 					</Row>

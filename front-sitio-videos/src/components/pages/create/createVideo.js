@@ -31,8 +31,9 @@ function CreateVideo() {
 		e.preventDefault()
 
 		const url = 'http://localhost:3000/api/videos'
+		var formData = new FormData();
+
 		if (file !== '') {
-			var formData = new FormData();
 			formData.append('archivo', file.files[0])
 		}
 
@@ -50,7 +51,6 @@ function CreateVideo() {
 			setData(res.data)
 			alert('Video creado con exito')
 		});
-		console.log(data)
 	}
 
 	return (

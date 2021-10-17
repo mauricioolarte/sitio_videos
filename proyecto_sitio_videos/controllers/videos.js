@@ -39,7 +39,6 @@ const descargarVideo = async (req, res = response) => {
 		.populate('usuario', 'nombre');
 	const urlSplit = video.url.split('/');
 	const videoName = urlSplit[urlSplit.length - 1]
-	console.log(videoName)
 	const file = `${process.env.PATH_PROJECT}/assets/videos/${videoName}`
 	res.download(file);
 
@@ -48,7 +47,6 @@ const descargarVideo = async (req, res = response) => {
 const crearVideo = async (req, res = response) => {
 
 	const { estado, usuario, tags, ...body } = req.body;
-	console.log(body)
 
 	const VideoDB = await Video.findOne({ nombre: body.nombre });
 	const usuarioDB = await Usuario.findById(usuario);
@@ -59,11 +57,9 @@ const crearVideo = async (req, res = response) => {
 		});
 	}
 	const autorizedExtensions = ['webm', 'mp4', 'flv', 'mkv'];
-	console.log(tags)
 	const newTags = tags.split(',');
 	const nuevonombre = await subirArchivo(req.files, autorizedExtensions, "videos")
 	const url = 'http://localhost:3000/assets/videos/' + nuevonombre;
-	console.log(url)
 	// Generar la data a guardar
 	const data = {
 		...body,
@@ -88,12 +84,12 @@ const actualizarVideo = async (req, res = response) => {
 
 	const VideoDB = await Video.findOne({ nombre: req.body.nombre });
 	const video = await Video.findById(id)
-	if (video.nombre !== data.nombre && !VideoDB) {
+	if ((video.nombre !== data.nombre) && !VideoDB) {
 		const newTags = tags.split(',');
 		data.tags = newTags;
 
 		const video = await Video.findByIdAndUpdate(id, data, { new: true });
-		res.json(video);
+		return res.status(200).json(video);
 	}
 
 
@@ -122,26 +118,22 @@ const valoracion = async (req, res = response) => {
 
 	if (valoracion == "like") {
 		const index = userlikes.indexOf(userId);
-		console.log(index)
 		if (index >= 0) {
 			userlikes.splice(index, 1);
 			likesNumber = userlikes.length;
 		} else {
 			userlikes.push(userId);
 			likesNumber = userlikes.length;
-			console.log(likesNumber);
 		}
 	} else {
 
 		const index = userdislikes.indexOf(userId);
-		console.log(index)
 		if (index >= 0) {
 			userdislikes.splice(index, 1)
 			dislikesNumber = userdislikes.length
 		} else {
 			userdislikes.push(userId)
 			dislikesNumber = userdislikes.length
-			console.log(likesNumber)
 		}
 
 

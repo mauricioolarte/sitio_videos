@@ -43,5 +43,6 @@ VideoSchema.methods.toJSON = function () {
 	return data;
 }
 
+VideoSchema.index({ 'name': 'text', 'descripcion': 'text', 'tags': 'text' });
 
 module.exports = model('Video', VideoSchema);

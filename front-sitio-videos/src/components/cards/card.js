@@ -1,4 +1,5 @@
 import React from 'react';
+import './card.css';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -12,8 +13,6 @@ import Button from 'react-bootstrap/Button'
 
 
 function CardVideo(props) {
-
-	console.log(props)
 
 	return (
 		<>

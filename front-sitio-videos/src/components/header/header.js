@@ -29,15 +29,12 @@ function Header() {
 						<Nav.Link href="/">Home</Nav.Link>
 						<Nav.Link href="/about">About</Nav.Link>
 					</Nav>
-					<Form className="d-flex ms-auto">
-						<FormControl
-							type="search"
-							placeholder="Search"
-							className="mr-2"
-							aria-label="Search"
-						/>
-						<Button variant="outline-success">Search</Button>
-					</Form>
+					<nav className="ms-auto">
+						<Button variant="outline-success" style={{ width: '6rem' }} className="m-1">login</Button>
+						<Button variant="outline-success" style={{ width: '6rem' }} className="m-1">Register</Button>
+					</nav>
+
+
 				</Navbar.Collapse>
 			</Navbar>
 		</>

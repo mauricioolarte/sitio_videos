@@ -13,10 +13,9 @@ class Server {
 
 		this.paths = {
 			auth: '/api/auth',
-			// buscar: '/api/buscar',
+			buscar: '/api/buscar',
 			videos: '/api/videos',
 			usuarios: '/api/usuarios',
-			uploads: '/api/uploads',
 		}
 
 
@@ -63,7 +62,7 @@ class Server {
 		this.app.use(this.paths.auth, require('../routes/auth'));
 		this.app.use(this.paths.videos, require('../routes/videos'));
 		this.app.use(this.paths.usuarios, require('../routes/usuarios'));
-		this.app.use(this.paths.uploads, require('../routes/uploads'));
+		this.app.use(this.paths.buscar, require('../routes/busqueda'));
 	}
 
 	listen() {
